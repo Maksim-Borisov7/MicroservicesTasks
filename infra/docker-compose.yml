@@ -1,0 +1,47 @@
+services:
+  rabbitmq:
+    image: rabbitmq:3-management
+    healthcheck:
+      test: [ "CMD", "rabbitmq-diagnostics", "ping" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    container_name: rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    environment:
+      RABBITMQ_DEFAULT_USER: ${RABBITMQ_DEFAULT_USER}
+      RABBITMQ_DEFAULT_PASS: ${RABBITMQ_DEFAULT_PASS}
+
+
+  service_x:
+    build: ../service_x
+    container_name: service_x
+    ports:
+      - "8000:8000"
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+    env_file: .env
+
+
+  service_y:
+    build: ../service_y
+    container_name: service_y
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+    env_file: .env
+
+
+  postgres:
+    image: postgres:17-alpine
+    container_name: psgr
+    environment:
+      POSTGRES_PASSWORD: ${PASSWORD}
+      POSTGRES_USER: ${USER}
+      POSTGRES_DB: ${DB_NAME}
+    ports:
+      - "5433:5432"
+
