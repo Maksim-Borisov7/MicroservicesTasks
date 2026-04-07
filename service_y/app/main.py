@@ -1,11 +1,10 @@
 import asyncio
 from contextlib import asynccontextmanager
-import broker.subscribers
 from faststream import FastStream
-from broker.core import broker
 from database.db import database
 from logs.logger import logger
-from broker.core import init_broker, close_broker
+from broker.core import init_broker, close_broker, broker
+import api.subscribers
 
 
 @asynccontextmanager
