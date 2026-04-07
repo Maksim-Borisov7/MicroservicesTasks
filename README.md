@@ -26,11 +26,11 @@ git clone https://github.com/Maksim-Borisov7/MicroservicesTasks.git
 
 ### 2) переходим в папку командой:
 ```python 
-cd ifra
+ cd MicroservicesTasks/infra
 ```
 
 ### 3) Настройка переменных окружения
-+ Создайте файл .env в папке /infra 
++ Создайте файл .env в папке MicroservicesTasks/infra
 + Скопируйте содержимое папки .env.example в .env
 
 ### 4) Запуск проекта 
