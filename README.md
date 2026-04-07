@@ -20,7 +20,8 @@
 ## Этапы запуска проекта:
 ### 1) Клонирование репозитория:
 ```python
-git clone https://github.com/Maksim-Borisov7/microservices-task-system
+git clone https://github.com/Maksim-Borisov7/MicroservicesTasks.git
+
 ```
 
 ### 2) переходим в папку командой:
